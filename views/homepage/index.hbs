@@ -19,19 +19,22 @@
   <div class="row">
     <div class="col-lg-12" id="task_list">
       {{#each tasks}}
-      <div class="card my-3 {{#eq status 'done' }}bg-light{{/eq}}">
-        <div class="card-body">
-          <p class="card-text">{{ description }}</p>
-          {{#eq status 'pending'}}
-            <!--
-            <a href="#" class="card-link">Done</a>
-            !-->
-            <form method="POST" action="/tasks/{{id}}">
-                <input class="btn btn-outline-success btn-sm form-group" type="submit" value="Done">
-            </form>
-          {{/eq}}
+        <div class="card my-3 {{#eq status 'done' }}bg-light{{/eq}}">
+          <div class="card-body">
+            <p class="card-text">{{ description }}</p>
+            {{#eq status 'pending'}}
+              <!--
+              <a href="#" class="card-link">Done</a>
+              !-->
+              <form method="POST" action="/tasks/{{id}}">
+                  <input class="btn btn-outline-success btn-sm form-group" type="submit" value="Done">
+              </form>
+            {{/eq}}
+              <form method="POST" action="/tasks/delete/{{id}}">
+                  <input class="btn btn-outline-danger btn-sm form-group" type="submit" value="Delete">
+              </form>
+          </div>
         </div>
-      </div>
       {{/each}}
     </div>
   </div>

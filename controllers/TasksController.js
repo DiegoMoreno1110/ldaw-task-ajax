@@ -24,3 +24,24 @@ exports.updateTaskStatus = (req, res) => {
   });
 
 }
+
+exports.delete = (req, res) =>{
+
+  let id = req.params.id;
+
+  Task.find(id).then((task) => {
+
+    if(!task){
+      return;
+    }
+
+    Task.delete(task.id).then((id) => {
+      res.redirect('/');
+    });
+
+  });
+
+}
+  
+
+

@@ -26,9 +26,8 @@ function storeTask(){
         })
         .catch(error => {
           console.log('Error: ', error);
-        })
+        });
     
-
 }
 
 function addTask(task) {
@@ -46,4 +45,40 @@ function addTask(task) {
     let node = document.createRange().createContextualFragment(html);
     document.getElementById('task_list').prepend(node);
 }
-  
+
+function updateStatusDone(id){
+
+  let payload = {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    }
+  };
+
+
+
+}
+
+
+function deleteTask (id) {
+
+  let payload = {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    }
+  };
+
+  fetch().then(response => {
+
+
+
+  });
+}
+
+
+
+
+

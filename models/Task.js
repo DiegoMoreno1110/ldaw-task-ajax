@@ -22,7 +22,7 @@ exports.find = (id) => {
 }
 
 exports.delete = (id) => {
-  return knex
+  return knex('tasks')
     .delete()
     .where('id', id);
 }
