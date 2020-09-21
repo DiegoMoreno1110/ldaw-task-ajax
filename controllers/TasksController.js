@@ -20,7 +20,26 @@ exports.updateTaskStatus = (req, res) => {
 
   Task.updateTaskStatus(id).then((id) => {
     console.log('Se cambió el status a done');
-    res.redirect('/');
+    if (req.xhr || req.headers.accept.indexOf("json") > -1) {
+      res.json({ id: id });
+    } else {
+      res.redirect("/");
+    }
+  });
+
+}
+
+exports.updateTaskStatusAjax = (req, res) => {
+
+  let id = req.body.id;
+
+  Task.updateTaskStatus(id).then((task) => {
+    console.log('Se cambio estatus a done ajax')
+    if (req.xhr || req.headers.accept.indexOf("json") > -1) {
+      res.json({ id: id });
+    } else {
+      res.redirect("/");
+    }
   });
 
 }
@@ -36,7 +55,11 @@ exports.delete = (req, res) =>{
     }
 
     Task.delete(task.id).then((id) => {
-      res.redirect('/');
+      if (req.xhr || req.headers.accept.indexOf("json") > -1) {
+        res.json({ id: id });
+      } else {
+        res.redirect("/");
+      }
     });
 
   });
